@@ -1,0 +1,13 @@
+body {
+	background-image:  url('backgrnd.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+h1 {
+	color: #ff3300;
+}
+
+a {
+	color: #0000ff;
+}
