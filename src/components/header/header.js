@@ -5,7 +5,7 @@ import Menu from "../menu"
 export default class Header extends Component {
     render() {
         return (
-            <div><Menu /></div>
+            <div className="header"><Menu /></div>
         )
     }
 }

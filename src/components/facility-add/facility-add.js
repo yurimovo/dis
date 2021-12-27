@@ -23,7 +23,11 @@ export default class FacilityAdd extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm-6">
-                        <input type="text" className="form-control input" placeholder="Организация" id="organization"/>
+                        <input 
+                            type="text" 
+                            className="form-control input" 
+                            placeholder="Организация" 
+                            name="organization"/>
                     </div>
                     <div className="col-sm-6">
                         <input type="text" className="form-control input" placeholder="Объект" id="facility"/>

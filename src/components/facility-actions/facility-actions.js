@@ -8,7 +8,7 @@ export default class FacilityActions extends Component {
     render() {
         return (
             <div>
-                <ul className="nav justify-content-center">
+                <ul className="nav justify-content-center fa">
                     <li className="nav-item text-center">
                         <Link className="nav-link" to="/facility-add">
                             Добавить
