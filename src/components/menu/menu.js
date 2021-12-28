@@ -25,7 +25,7 @@ export default class Menu extends Component {
                             <li><Link className="nav-link" to="/facilities">Объекты</Link></li>
                             <li><Link className="nav-link" to="/apartments">МХИГ</Link></li>
                             <li><Link className="nav-link" to="/reports">Отчёты</Link></li>
-                            <li><Link className="nav-link" to="/sim">СИМ-карты</Link></li>
+                            <li><Link className="nav-link" to="/sim-cards">СИМ-карты</Link></li>
                         </ul>
                         <div className="d-flex align-items-center">
                             <button type="button" className="btn btn-link px-3 me-2">

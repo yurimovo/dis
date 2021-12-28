@@ -7,6 +7,7 @@ import Main from '../main'
 import Facilities from '../facilities'
 import Apartments from '../apartments'
 import Reports from "../reports"
+import SimCards from "../sim-cards"
 import FacilityActions from "../facility-actions"
 import ApartmentActions from "../apartment-actions/apartment-actions"
 import ReportActions from "../report-actions"
@@ -15,7 +16,7 @@ import FacilityAdd from '../facility-add'
 import FacilityEdit from '../facility-edit'
 import ApartmentAdd from '../apartment-add'
 import ApartmentEdit from '../apartment-edit'
-import SimCards from "../sim-cards"
+import SimAdd from "../sim-add"
 
 import './app.css'
 
@@ -44,11 +45,12 @@ export default class App extends Component {
                                 <Route path="/facilities" element={<Facilities />} />
                                 <Route path="/apartments" element={<Apartments />} />
                                 <Route path="/reports" element={<Reports />} />
-                                <Route path="/sim" element={<SimCards />} />
+                                <Route path="/sim-cards" element={<SimCards />} />
                                 <Route path="/facility-add" element={<FacilityAdd />} />
                                 <Route path="/facility-edit" element={<FacilityEdit />} />
                                 <Route path="/apartment-add" element={<ApartmentAdd />} />
                                 <Route path="/apartment-edit" element={<ApartmentEdit />} />
+                                <Route path="/sim-add" element={<SimAdd />} />
                             </Routes>
                         </div>
                     </div>
