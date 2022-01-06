@@ -35,7 +35,7 @@ export default class App extends Component {
             <Router>
                 <div className='container'>
                     <div className="row">
-                        <div className="col-sm-12">
+                        <div className="col-sm-12" style={{padding: 0}}>
                             <Header />
                         </div>
                     </div>
