@@ -1,37 +1,16 @@
-.facility-add {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color:white;
-}
-
-.h2 {
-    color: midnightblue;
-}
-
-.input {
-    margin-bottom: 5px;
-    background-color:rgb(255, 255, 255);
-    border-radius: 20px;
-    border-color: darkblue;
-}
-
-.date-picker {
+.input-fa {
+    border-radius: 15px;
     width: 100%;
-    min-height: 100%;
-    background-color: rgb(255, 255, 255);
-    border-radius: 20px;
-    border-color:rgb(89, 137, 196);
-    margin-bottom: 5px;
+    padding-left: 20px;
 }
 
-.dd {
-    width: 100%;
-    margin-bottom: 5px;
-    border-radius: 20px;
+.h2-fa {
+    color: darkblue;
 }
 
-.button-dd {
-    border-radius: 20px;
+.select-fa {
     width: 100%;
-    border-color: darkblue;
+    height: 5.25%;
+    border-radius: 15px;
+    padding-left: 20px;
 }

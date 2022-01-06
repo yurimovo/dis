@@ -28,11 +28,15 @@ export default class Menu extends Component {
                             <li><Link className="nav-link" to="/sim-cards">СИМ-карты</Link></li>
                         </ul>
                         <div className="d-flex align-items-center">
-                            <button type="button" className="btn btn-link px-3 me-2">
-                                Авторизация
+                            <button type="button" className="btn btn-outline-danger px-3 me-2 btn-menu">
+                                <Link to="/admin-panel">Настройки</Link>
                             </button>
-                            <button type="button" className="btn btn-primary me-3">
-                                Регистрация
+                            <br/>
+                            <button type="button" className="btn btn-outline-success px-3 me-2 btn-menu">
+                                <Link to="/login">Войти</Link>
+                            </button>
+                            <button type="button" className="btn btn-outline-primary me-3 btn-menu">
+                                <Link to="/register">Регистрация</Link>
                             </button>
                         </div>
                     </div>
