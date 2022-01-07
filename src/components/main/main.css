@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.main-body {
+    padding: 0;
+    margin: 0;
+    background-color:cornsilk;
+}
+
+.h2-main {
+    padding-top: 10px;
+    font-family: 'Lobster', cursive;
+    color:navy;
+    text-align: center;
+    font-size: 100px;
+}

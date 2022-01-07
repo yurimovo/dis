@@ -35,9 +35,6 @@ export default class Menu extends Component {
                             <button type="button" className="btn btn-outline-success px-3 me-2 btn-menu">
                                 <Link to="/login">Войти</Link>
                             </button>
-                            <button type="button" className="btn btn-outline-primary me-3 btn-menu">
-                                <Link to="/register">Регистрация</Link>
-                            </button>
                         </div>
                     </div>
                 </div>

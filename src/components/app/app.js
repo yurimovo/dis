@@ -9,7 +9,6 @@ import Apartments from '../apartments'
 import Reports from "../reports"
 import SimCards from "../sim-cards"
 import AdminPanel from "../admin-panel"
-import UserRegister from "../register/register"
 import FacilityActions from "../facility-actions"
 import ApartmentActions from "../apartment-actions/apartment-actions"
 import ReportActions from "../report-actions"
@@ -43,7 +42,7 @@ export default class App extends Component {
                                 <Route path="/sim-cards" element={<SimActions />} />
                             </Routes>
                         </div>
-                        <div className="col-sm-10 border border-4 border-warning rounded-3 bg-light">
+                        <div className="col-sm-10 border border-4 border-warning rounded-3 bg-light main">
                             <Routes>
                                 <Route path="/" exact element={<Main />} />
                                 <Route path="/facilities" element={<Facilities />} />
@@ -51,7 +50,6 @@ export default class App extends Component {
                                 <Route path="/reports" element={<Reports />} />
                                 <Route path="/sim-cards" element={<SimCards />} />
                                 <Route path="/admin-panel" element={<AdminPanel />} />
-                                <Route path="/register" element={<UserRegister />} />
                                 <Route path="/facility-add" element={<FacilityAdd />} />
                                 <Route path="/facility-edit" element={<FacilityEdit />} />
                                 <Route path="/apartment-add" element={<ApartmentAdd />} />
