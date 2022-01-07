@@ -1,9 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 
 import './facility-add.css'
 
 const FacilityAdd = () => {
+
+    const [contructDateType, setContructDateType] = useState('text')
+    const [priceDateType, setPriceDateType] = useState('text')
+
+    const typeContructDateChange = () => {
+        setContructDateType('date')
+    }
+
+    const typePriceDateChange = () => {
+        setPriceDateType('date')
+    }
 
     const {
         register,
@@ -83,8 +94,9 @@ const FacilityAdd = () => {
                             <p className="text-danger">{errors?.contructNumber?.message || 'Error:'}</p>}
                         </div>
                         <input className="input-fa"
-                            type='date'
+                            type={contructDateType}
                             placeholder="Дата договора"
+                            onFocus={typeContructDateChange}
                             {...register('contructDate', {
                                 required: 'Поле обязательно для заполнения',
                                 valueIsDate: {
@@ -108,8 +120,9 @@ const FacilityAdd = () => {
                             <p className="text-danger">{errors?.price?.message || 'Error:'}</p>}
                         </div>
                         <input className="input-fa"
-                            type='date'
+                            type={priceDateType}
                             placeholder="Дата тарифа"
+                            onFocus={typePriceDateChange}
                             {...register('priceDate', {
                                 required: 'Поле обязательно для заполнения',
                                 valueIsDate: {
