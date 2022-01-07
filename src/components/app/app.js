@@ -20,12 +20,6 @@ import FacilityEdit from '../facility-edit'
 import ApartmentAdd from '../apartment-add'
 import ApartmentEdit from '../apartment-edit'
 import SimAdd from "../sim-add"
-import OwnershipType from '../admin-panel/ownership-type'
-import Category from '../admin-panel/category'
-import SecurityType from '../admin-panel/security-type'
-import Spi from '../admin-panel/spi'
-import Hardware from '../admin-panel/hardware'
-import Organizations from '../admin-panel/organizations'
 
 import './app.css'
 
@@ -49,7 +43,7 @@ export default class App extends Component {
                                 <Route path="/sim-cards" element={<SimActions />} />
                             </Routes>
                         </div>
-                        <div className="col-sm-10 border border-4 border-warning rounded-3 bg-success">
+                        <div className="col-sm-10 border border-4 border-warning rounded-3 bg-light">
                             <Routes>
                                 <Route path="/" exact element={<Main />} />
                                 <Route path="/facilities" element={<Facilities />} />
@@ -63,12 +57,6 @@ export default class App extends Component {
                                 <Route path="/apartment-add" element={<ApartmentAdd />} />
                                 <Route path="/apartment-edit" element={<ApartmentEdit />} />
                                 <Route path="/sim-add" element={<SimAdd />} />
-                                <Route path="/admin-panel/ownership-type" element={<OwnershipType />} />
-                                <Route path="/admin-panel/category" element={<Category />} />
-                                <Route path="/admin-panel/security-type" element={<SecurityType />} />
-                                <Route path="/admin-panel/spi" element={<Spi />} />
-                                <Route path="/admin-panel/hardware" element={<Hardware />} />
-                                <Route path="/admin-panel/organizations" element={<Organizations />} />
                             </Routes>
                         </div>
                     </div>

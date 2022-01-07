@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import OwnershipType from './ownership-type'
 import Category from './category'
@@ -7,143 +7,170 @@ import Spi from './spi'
 import Hardware from './hardware'
 import Organizations from './organizations'
 
+import './admin-panel.css'
+
 const AdminPanel = () => {
 
-    
+    const [otClassName, setOtClassName] = useState('nav-link')
+    const [categoryClassName, setCategoryClassName] = useState('nav-link')
+    const [stClassName, setStClassName] = useState('nav-link')
+    const [spiClassName, setSpiClassName] = useState('nav-link')
+    const [hardwareClassName, setHardwareClassName] = useState('nav-link')
+    const [organizationsClassName, setOrganizationsClassName] = useState('nav-link')
 
+    const ownershipClick = () => {
+        setOtClassName('nav-link active')
+    }
+
+    const ownershipBlur = () => {
+        setOtClassName('nav-link')
+    }
+
+    const categoryClick = () => {
+        setCategoryClassName('nav-link active')
+    }
+
+    const categoryBlur = () => {
+        setCategoryClassName('nav-link')
+    }
+
+    const stClick = () => {
+        setStClassName('nav-link active')
+    }
+
+    const stBlur = () => {
+        setStClassName('nav-link')
+    }
+
+    const spiClick = () => {
+        setSpiClassName('nav-link active')
+    }
+
+    const spiBlur = () => {
+        setSpiClassName('nav-link')
+    }
+
+    const hardwareClick = () => {
+        setHardwareClassName('nav-link active')
+    }
+
+    const hardwareBlur = () => {
+        setHardwareClassName('nav-link')
+    }
+
+    const organizationsClick = () => {
+        setOrganizationsClassName('nav-link active')
+    }
+
+    const organizationsBlur = () => {
+        setOrganizationsClassName('nav-link')
+    }
+    
     return (
-        <div>
+        <div className='container'>
             <div className='text-center'><h2>Панель настроек</h2></div>
-            <ul className="nav nav-tabs" id="admin-panel" role="tablist">
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="ownershipType" 
-                        data-toggle="tab" 
-                        data-bs-target="#ownershipType" 
-                        type="button" role="tab" 
-                        aria-controls="ownershipType" 
-                        aria-selected="true"
+            <ul className="nav nav-tabs">
+                <li className='nav-item'>
+                    <a 
+                        href="#ownershipType" 
+                        data-toggle="tab"
+                        className={otClassName}
+                        onClick={ownershipClick}
+                        onBlur={ownershipBlur}
                     >
                         Форма собственности
-                    </button>
+                    </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="category" 
-                        data-toggle="tab" 
-                        data-bs-target="#category" 
-                        type="button" role="tab" 
-                        aria-controls="category" 
-                        aria-selected="false"
+                <li className='nav-item'>
+                    <a 
+                        href="#category" 
+                        data-toggle="tab"
+                        className={categoryClassName}
+                        onClick={categoryClick}
+                        onBlur={categoryBlur}
                     >
                         Категория
-                    </button>
+                    </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="securityType" 
-                        data-toggle="tab" 
-                        data-bs-target="#securityType" 
-                        type="button" 
-                        role="tab" 
-                        aria-controls="securityType" 
-                        aria-selected="false"
+                <li className='nav-item'>
+                    <a 
+                        href="#securityType"
+                        data-toggle="tab"
+                        className={stClassName}
+                        onClick={stClick}
+                        onBlur={stBlur}
                     >
                         Вид охраны
-                    </button>
+                    </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="spi" 
-                        data-toggle="tab" 
-                        data-bs-target="#spi" 
-                        type="button" 
-                        role="tab" 
-                        aria-controls="spi" 
-                        aria-selected="false"
+                <li className='nav-item'>
+                    <a 
+                        href="#spi"
+                        data-toggle="tab"
+                        className={spiClassName}
+                        onClick={spiClick}
+                        onBlur={spiBlur}
                     >
                         СПИ
-                    </button>
+                    </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="hardware" 
-                        data-toggle="tab" 
-                        data-bs-target="#hardware" 
-                        type="button" 
-                        role="tab" 
-                        aria-controls="hardware" 
-                        aria-selected="false"
+                <li className='nav-item'>
+                    <a 
+                        href="#hardware"
+                        data-toggle="tab"
+                        className={hardwareClassName}
+                        onClick={hardwareClick}
+                        onBlur={hardwareBlur}
                     >
                         Оборудование
-                    </button>
+                    </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                    <button 
-                        className="nav-link" 
-                        id="organizations" 
-                        data-toggle="tab" 
-                        data-bs-target="#organizations" 
-                        type="button" 
-                        role="tab" 
-                        aria-controls="organizations" 
-                        aria-selected="false"
+                <li className='nav-item'>
+                    <a 
+                        href="#organizations"
+                        data-toggle="tab"
+                        className={organizationsClassName}
+                        onClick={organizationsClick}
+                        onBlur={organizationsBlur}
                     >
                         Организации
-                    </button>
+                    </a>
                 </li>
             </ul>
-            <div className="tab-content" id="myTabContent">
+            <div className="tab-content tabs-style">
                 <div 
-                    className="tab-pane fade" 
+                    className="tab-pane fade show active" 
                     id="ownershipType" 
-                    role="tabpanel" 
-                    aria-labelledby="ownershipType"
                 >
                     <OwnershipType />
                 </div>
                 <div 
-                    className="tab-pane fade" 
-                    id="category" 
-                    role="tabpanel" 
-                    aria-labelledby="category"
+                    className="tab-pane fade show" 
+                    id="category"
                 >
                     <Category />
                 </div>
                 <div 
-                    className="tab-pane fade" 
-                    id="securityType" 
-                    role="tabpanel" 
-                    aria-labelledby="securityType"
+                    className="tab-pane fade show" 
+                    id="securityType"
                 >
                     <SecurityType />
                 </div>
                 <div 
-                    className="tab-pane fade" 
+                    className="tab-pane fade show" 
                     id="spi" 
-                    role="tabpanel" 
-                    aria-labelledby="spi"
                 >
                     <Spi />
                 </div>
                 <div 
-                    className="tab-pane fade" 
-                    id="hardware" 
-                    role="tabpanel" 
-                    aria-labelledby="hardware"
+                    className="tab-pane fade show" 
+                    id="hardware"
                 >
                     <Hardware />
                 </div>
                 <div 
-                    className="tab-pane fade" 
-                    id="organizations" 
-                    role="tabpanel" 
-                    aria-labelledby="organizations"
+                    className="tab-pane fade show" 
+                    id="organizations"
                 >
                     <Organizations />
                 </div>
