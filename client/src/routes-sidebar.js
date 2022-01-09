@@ -1,12 +1,11 @@
 import React from 'react'
-import {Routes, Route, Navigate} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 
 import FacilityActions from "./components/facility-actions"
 import ApartmentActions from "./components/apartment-actions"
 import ReportActions from "./components/report-actions"
 import MainActions from "./components/main-actions"
 import SimActions from "./components/sim-actions"
-import Auth from './components/auth'
 
 export const useRoutesSidebar = (isAuthenticated) => {
     if (isAuthenticated) {
