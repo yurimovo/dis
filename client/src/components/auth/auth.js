@@ -1,16 +1,23 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 //import { useForm } from "react-hook-form"
 
 import { useHttp } from '../../hooks/http.hook'
+import { useMessage } from "../../hooks/message.hook"
 import './auth.css'
 
 const Auth = () => {
 
-    const { loading, request } = useHttp()
+    const message = useMessage()
+    const { loading, request, error, clearError } = useHttp()
     const [form, setForm] = useState({
         userName: '',
         password: ''
     })
+
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
 
     /* const {
         register,
