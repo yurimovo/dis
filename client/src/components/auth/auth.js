@@ -1,45 +1,13 @@
-import React, { useEffect, useState } from "react"
-//import { useForm } from "react-hook-form"
+import React, {useState} from 'react'
+import Input from "../../utils/input/Input"
+import { registration } from "../../actions/user-register"
+import { authorization } from "../../actions/user-login"
 
-import { useHttp } from '../../hooks/http.hook'
-import { useMessage } from "../../hooks/message.hook"
 import './auth.css'
 
-const Auth = () => {
-
-    const message = useMessage()
-    const { loading, request, error, clearError } = useHttp()
-    const [form, setForm] = useState({
-        userName: '',
-        password: ''
-    })
-
-    useEffect(() => {
-        message(error)
-        clearError()
-    }, [error, message, clearError])
-
-    /* const {
-        register,
-        formState: {
-            errors,
-            isValid
-        },
-        reset
-    } = useForm({
-        mode: "onBlur"
-    }) */
-
-    const changeHandler = event => {
-        setForm({...form, [event.target.name]: event.target.value})
-    }
-
-    const registerHandler = async () => {
-        try {
-            const data = await request('/api/auth/register', 'POST', form)
-            console.log('Data:', data)
-        } catch (e) {}
-    }
+const Registration = () => {
+    const [userName, setUserName] = useState("")
+    const [password, setPassword] = useState("")
 
     return (
         <div className="container ">
@@ -52,50 +20,34 @@ const Auth = () => {
                         </div>
                         <div className="card-body">
                             <div>
-                                <input 
+                                <Input
                                     className="input-auth"
-                                    placeholder="Имя пользователя"
-                                    id="userName"
-                                    name="userName"
-                                    /* {...register('username', {
-                                        required: 'Поле обязательно для заполнения',
-                                    })} */
-                                    onChange={changeHandler}
+                                    value={userName} 
+                                    setValue={setUserName} 
+                                    type="text" 
+                                    placeholder="Введите логин..."
                                 />
-                                {/* <div style={{height: 40}}>
-                                    {errors?.username && 
-                                    <p className="text-danger">{errors?.username?.message || 'Error:'}</p>}
-                                </div> */}
                                 <br/>
-                                <input
+                                <Input 
                                     className="input-auth"
-                                    type="password"
-                                    placeholder="Пароль"
-                                    id="password"
-                                    name="password"
-                                    /* {...register('password', {
-                                        required: 'Поле обязательно для заполнения',
-                                    })} */
-                                    onChange={changeHandler}
+                                    value={password} 
+                                    setValue={setPassword} 
+                                    type="password" 
+                                    placeholder="Введите пароль..."
                                 />
-                                {/* <div style={{height: 40}}>
-                                    {errors?.password && 
-                                    <p className="text-danger">{errors?.password?.message || 'Error:'}</p>}
-                                </div> */}
                             </div>
                             <div>
                                 <hr/>
                                 <button 
                                     className="btn btn-sucess" 
                                     style={{marginRight: 10}}
-                                    disabled={loading}
+                                    onClick={() => authorization(userName, password)}
                                 >
                                     Войти
                                 </button>
                                 <button 
-                                    className="btn btn-primary"
-                                    onClick={registerHandler}
-                                    disabled={loading}
+                                    className="btn btn-success" 
+                                    onClick={() => registration(userName, password)}
                                 >
                                     Регистрация
                                 </button>
@@ -106,7 +58,11 @@ const Auth = () => {
                 <div className="col-sm-3"></div>
             </div>
         </div>
+        
+        
+        
+        
     )
 }
 
-export default Auth
+export default Registration
