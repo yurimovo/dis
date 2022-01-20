@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Input from "../../utils/input/Input"
-import { registration } from "../../actions/user-register"
-import { authorization } from "../../actions/user-login"
+import { registration, authorization } from "../../actions/user"
 
 import './auth.css'
 
 const Registration = () => {
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const history = useNavigate()
 
     return (
         <div className="container ">
@@ -47,7 +48,9 @@ const Registration = () => {
                                 </button>
                                 <button 
                                     className="btn btn-success" 
-                                    onClick={() => registration(userName, password)}
+                                    onClick={() => registration(userName, password).then(r => {
+                                        history.push('/')
+                                    })}
                                 >
                                     Регистрация
                                 </button>
@@ -58,10 +61,6 @@ const Registration = () => {
                 <div className="col-sm-3"></div>
             </div>
         </div>
-        
-        
-        
-        
     )
 }
 

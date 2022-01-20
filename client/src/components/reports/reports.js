@@ -1,9 +1,9 @@
-import React, { Component } from "react"
+import React from "react"
 
-export default class Reports extends Component {
-    render() {
+const Reports = () => {
         return (
             <div><h2>Отчеты</h2></div>
         )
-    }
 }
+
+export default Reports

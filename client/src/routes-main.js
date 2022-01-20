@@ -14,8 +14,8 @@ import ApartmentEdit from './components/apartment-edit'
 import SimAdd from "./components/sim-add"
 import Auth from './components/auth'
 
-export const useRoutesMain = (isAuthenticated) => {
-    if (isAuthenticated) {
+export const useRoutesMain = () => {
+    if (localStorage.getItem('token')) {
         return (
             <Routes>
                 <Route path="/" exact element={<Main />} />
@@ -35,7 +35,7 @@ export const useRoutesMain = (isAuthenticated) => {
 
     return (
         <Routes>
-            <Route path="/" exact element={<Auth />} />
+            <Route path="/auth" exact element={<Auth />} />
         </Routes>
     )
 }
