@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const registration = async (userName, password) => {
+const registration = async (userName, password) => {
     try {
         const response = await axios.post(`/api/auth/register`, {
             userName,
@@ -10,10 +10,9 @@ export const registration = async (userName, password) => {
     } catch (e) {
         console.log(e.response.data.message)
     }
-
 }
 
-export const authorization = async (userName, password) => {
+const authorization = async (userName, password) => {
 
     try {
         const response = await axios.post(`/api/auth/login`, {
@@ -24,4 +23,9 @@ export const authorization = async (userName, password) => {
     } catch (e) {
         console.log(e.response.data.message)
     }
+}
+
+export {
+    registration,
+    authorization
 }

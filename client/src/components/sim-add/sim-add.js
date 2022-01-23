@@ -1,29 +1,36 @@
-import React from "react"
-import { useForm } from 'react-hook-form'
+import React, {useState} from "react"
+import { useNavigate } from "react-router-dom";
 
 import './sim-add.css'
 
+import {simAdd} from "../../actions/sim";
+import Input from "../../utils/input/Input";
+import DatePicker from "../../utils/input/DatePicker";
+
 const SimAdd = () => {
 
-    const {
-        register,
-        formState: {
-            errors,
-            isValid
-        },
-        handleSubmit,
-        reset
-    } = useForm({
-        mode: "onBlur"
-    })
+    const history = useNavigate()
 
-    const onSubmit = (simData) => {
-        console.log(simData)
-        reset()
+    const [fccId, setFccId] = useState("")
+    const [simNumber, setSimNumber] = useState("")
+    const [mountingDate, setMountingDate] = useState(Date.now)
+    const [pultNumber, setPultNumber] = useState("")
+    const [mountingPlace, setMountingPlace] = useState("")
+    const [mountingAddress, setMountingAddress] = useState("")
+
+    const handleSimAdd = async () => {
+        await simAdd(
+            fccId,
+            simNumber,
+            mountingDate,
+            pultNumber,
+            mountingPlace,
+            mountingAddress)
+        history('/')
     }
 
     return (
-        <form className="bg-transparent" onSubmit={handleSubmit(onSubmit)}>
+        <form className="bg-transparent">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 text-center">
@@ -32,98 +39,77 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
-                            placeholder="FCC ID:"
-                            {...register('fccId', {
-                                required: 'Поле обязательно для заполнения',
-                                maxLength: {
-                                    value: 19,
-                                    message: 'Максимальная длина 19 символов'
-                                }
-                            })}
+                        <Input
+                            className="input-sa"
+                            value={fccId}
+                            setValue={setFccId}
+                            type="text"
+                            placeholder="FCC ID..."
                         />
-                        <div style={{height: 40}}>
-                            {errors?.fccId && <p className="text-danger">{errors?.fccId?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
-                            placeholder="№ телефона СИМ-карты"
-                            {...register('simNumber', {
-                                required: 'Поле обязательно для заполнения',
-                                maxLength: {
-                                    value: 12,
-                                    message: 'Максимальная длина 12 символов'
-                                }
-                            })}
+                        <Input
+                            className="input-sa"
+                            value={simNumber}
+                            setValue={setSimNumber}
+                            type="text"
+                            placeholder="№ телефона СИМ..."
                         />
-                        <div style={{height: 40}}>
-                            {errors?.simNumber && <p className="text-danger">{errors?.simNumber?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
+                        <DatePicker className="dp-sa"
                             type='date'
                             placeholder="Дата установки"
-                            {...register('mountingDate', {
-                                required: 'Поле обязательно для заполнения',
-                                valueIsDate: {
-                                    value: true,
-                                    message: 'В поле должна быть дата'
-                                }
-                            })}
+                            value={mountingDate}
+                            setValue={setMountingDate}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.mountingDate && <p className="text-danger">{errors?.mountingDate?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
-                            placeholder="Пультовые номера:"
-                            {...register('pultNumber', {
-                                    required: 'Поле обязательно для заполнения',
-                            })}
+                        <Input
+                            className="input-sa"
+                            value={pultNumber}
+                            setValue={setPultNumber}
+                            type="text"
+                            placeholder="Пультовый №..."
                         />
-                        <div style={{height: 40}}>
-                            {errors?.pultNumber && <p className="text-danger">{errors?.pultNumber?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
-                            placeholder="Место установки:"
-                            {...register('mountingPlace', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <Input
+                            className="input-sa"
+                            value={mountingPlace}
+                            setValue={setMountingPlace}
+                            type="text"
+                            placeholder="Место установки..."
                         />
-                        <div style={{height: 40}}>
-                            {errors?.mountingPlace && <p className="text-danger">{errors?.mountingPlace?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="input-sa"
-                        placeholder="Адрес установки:"
-                            {...register('mountingAddress', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <Input
+                            className="input-sa"
+                            value={mountingAddress}
+                            setValue={setMountingAddress}
+                            type="text"
+                            placeholder="Адрес установки..."
                         />
-                        <div style={{height: 40}}>
-                            {errors?.mountingAddress && <p className="text-danger">{errors?.mountingAddress?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input className="btn btn-submit" type='submit' disabled={!isValid} />
+                        <button
+                            className="btn btn-submit btn-add"
+                            onClick={handleSimAdd}
+                        >
+                            Добавить
+                        </button>
                     </div>
                 </div>
             </div>

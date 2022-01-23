@@ -19,6 +19,7 @@
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.5",
+    "redux-devtools-extension": "^2.13.9",
     "superagent": "^7.0.2"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 {
     "port": 5000,
     "jwtSecret": "2455396",
+    "baseUrl": "http://localhost:5000",
     "mongoUri": "mongodb+srv://yurimovo:qwerty123456@cluster0.1un06.mongodb.net/dislocation?retryWrites=true&w=majority"
 }

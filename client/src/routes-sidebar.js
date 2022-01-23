@@ -7,8 +7,8 @@ import ReportActions from "./components/report-actions"
 import MainActions from "./components/main-actions"
 import SimActions from "./components/sim-actions"
 
-export const useRoutesSidebar = (isAuthenticated) => {
-    if (isAuthenticated) {
+export const useRoutesSidebar = () => {
+    if (localStorage.getItem('token')) {
         return (
             <Routes>
                 <Route path="/" exact element={<MainActions />} />

@@ -13,29 +13,29 @@ import ApartmentAdd from './components/apartment-add'
 import ApartmentEdit from './components/apartment-edit'
 import SimAdd from "./components/sim-add"
 import Auth from './components/auth'
+import { useSelector } from 'react-redux'
 
 export const useRoutesMain = () => {
-    if (localStorage.getItem('token')) {
-        return (
-            <Routes>
-                <Route path="/" exact element={<Main />} />
-                <Route path="/facilities" element={<Facilities />} />
-                <Route path="/apartments" element={<Apartments />} />
-                <Route path="/reports" element={<Reports />} />
-                <Route path="/sim-cards" element={<SimCards />} />
-                <Route path="/admin-panel" element={<AdminPanel />} />
-                <Route path="/facility-add" element={<FacilityAdd />} />
-                <Route path="/facility-edit" element={<FacilityEdit />} />
-                <Route path="/apartment-add" element={<ApartmentAdd />} />
-                <Route path="/apartment-edit" element={<ApartmentEdit />} />
-                <Route path="/sim-add" element={<SimAdd />} />
-            </Routes>
-        )
-    }
-
+    const auth = useSelector(state => state.auth)
     return (
-        <Routes>
-            <Route path="/auth" exact element={<Auth />} />
-        </Routes>
+        <>
+          {auth ? <Routes>
+            <Route path="/" exact element={<Main />} />
+            <Route path="/facilities" element={<Facilities />} />
+            <Route path="/apartments" element={<Apartments />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/sim-cards" element={<SimCards />} />
+            <Route path="/admin-panel" element={<AdminPanel />} />
+            <Route path="/facility-add" element={<FacilityAdd />} />
+            <Route path="/facility-edit" element={<FacilityEdit />} />
+            <Route path="/apartment-add" element={<ApartmentAdd />} />
+            <Route path="/apartment-edit" element={<ApartmentEdit />} />
+            <Route path="/sim-add" element={<SimAdd />} />
+          </Routes> :
+              <Routes>
+                <Route path="/auth" exact element={<Auth />} />
+              </Routes>
+            }
+        </>
     )
-}
+  }

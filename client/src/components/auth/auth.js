@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Input from "../../utils/input/Input"
 import { registration, authorization } from "../../actions/user"
+import { useDispatch } from 'react-redux'
+import { login } from '../../store/actions'
 
 import './auth.css'
 
@@ -9,6 +11,22 @@ const Registration = () => {
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
     const history = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleRegister = async () => {
+        await registration(userName, password)
+        setUserName('')
+        setPassword('')
+        history('/auth')
+    }
+
+    const handleLogin = async () => {
+        await authorization(userName, password)
+        dispatch(login())
+        setUserName('')
+        setPassword('')
+        history('/')
+    }
 
     return (
         <div className="container ">
@@ -42,15 +60,13 @@ const Registration = () => {
                                 <button 
                                     className="btn btn-sucess" 
                                     style={{marginRight: 10}}
-                                    onClick={() => authorization(userName, password)}
+                                    onClick={ handleLogin }
                                 >
                                     Войти
                                 </button>
                                 <button 
-                                    className="btn btn-success" 
-                                    onClick={() => registration(userName, password).then(r => {
-                                        history.push('/')
-                                    })}
+                                    className="btn btn-success"
+                                    onClick={ handleRegister }
                                 >
                                     Регистрация
                                 </button>

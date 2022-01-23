@@ -1,9 +1,13 @@
 .input-sa {
-    border-radius: 15px;
-    width: 40%;
+    border-radius: 20px;
     padding-left: 20px;
+    margin-bottom: 10px;
 }
 
 .h2-sa {
     color: darkblue;
+}
+
+.btn-add{
+    margin-bottom: 10px;
 }
