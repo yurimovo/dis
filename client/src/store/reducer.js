@@ -20,6 +20,17 @@ const reducer = (state = initialState, action) => {
                 auth: false
             }
 
+        case actions.GETSIMCARD:
+            return {
+                ...state,
+                fccId: '',
+                simNumber: '',
+                mountingDate: '',
+                pultNumber: '',
+                mountingPlace: '',
+                mountingAddress: ''
+            }
+
         case actions.CHECKAUTH:
             if(localStorage.getItem('token')) {
                 return {

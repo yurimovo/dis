@@ -35,7 +35,7 @@ router.post('/sim-add', async (req, res) => {
 // Чтение симок из базы
 router.get('/sim-cards', async (req, res) => {
     try {
-        const simCards = await Sim.find({ fccId: null }) //???
+        const simCards = await Sim.find({})
         res.json(simCards)
     } catch (e) {
         console.log(e)
@@ -46,7 +46,7 @@ router.get('/sim-cards', async (req, res) => {
 // Выборка нужно СИМ
 router.get('/sim-cards/:id', async (req, res) => {
     try {
-        const simCard = await Sim.findById(req.params.id) //???
+        const simCard = await Sim.findById(req.params.id)
         res.json(simCard)
     } catch (e) {
         console.log(e)

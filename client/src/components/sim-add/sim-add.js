@@ -61,7 +61,8 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <DatePicker className="dp-sa"
+                        <DatePicker
+                            className="dp-sa"
                             type='date'
                             placeholder="Дата установки"
                             value={mountingDate}

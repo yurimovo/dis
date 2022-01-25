@@ -14,7 +14,13 @@ const logout = (auth) => {
 
 const checkAuth = () => {
     return {
-        type: 'CHECKAUTH'
+        type: actions.CHECKAUTH
+    }
+}
+
+const getSimCards = () => {
+    return {
+        type: actions.GETSIMCARD
     }
 }
 

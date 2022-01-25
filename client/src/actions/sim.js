@@ -22,6 +22,14 @@ const simAdd = async (
     }
 }
 
+const getAllSimCards = async (simCards) => {
+    try {
+        const response = await axios.get('/api/sim/sim-cards', {})
+        console.log(response.data.message)
+    } catch (e) {}
+}
+
 export {
-    simAdd
+    simAdd,
+    getAllSimCards
 }
