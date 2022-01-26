@@ -43,7 +43,7 @@ router.get('/sim-cards', async (req, res) => {
     }
 })
 
-// Выборка нужно СИМ
+// Выборка нужной СИМ
 router.get('/sim-cards/:id', async (req, res) => {
     try {
         const simCard = await Sim.findById(req.params.id)
