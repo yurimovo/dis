@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
 import './sim-cards.css'
 
 const SimCards = () => {
 
-    const [simCards, setSimCards] = useState(null)
+    const [simCards, setSimCards] = useState([])
 
     useEffect(() => {
         (async () => {
@@ -30,21 +31,23 @@ const SimCards = () => {
                     </div>
                 </div>
                 {simCards &&
-                simCards.map((simCard, index) => {
-                    const correctDate = new Date(simCard.mountingDate).toLocaleDateString()
+                simCards.map((simCard) => {
                     return (
-                        <div>
+                        <div key={simCard._id}>
                             <div className={'row'}>
                                 <div
                                     className={'col-sm-4'}
                                 >
-                                    <a href={`/sim-cards/:${simCard.fccId}`}>{simCard.fccId}</a>
+                                    {simCard.fccId}
                                 </div>
-                                <div className={'col-sm-4'}>
+                                <div className={'col-sm-2'}>
+                                    <Link to={`/sim-details/${simCard._id}`}>>></Link>
+                                </div>
+                                <div className={'col-sm-3'}>
                                     {simCard.simNumber}
                                 </div>
-                                <div className={'col-sm-4'}>
-                                    {correctDate}
+                                <div className={'col-sm-3'}>
+                                    {new Date(simCard.mountingDate).toLocaleDateString()}
                                 </div>
                             </div>
                         </div>
