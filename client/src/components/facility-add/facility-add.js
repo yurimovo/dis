@@ -13,6 +13,17 @@ const FacilityAdd = () => {
     const [organization, setOrganization] = useState("")
     const [facility, setFacility] = useState("")
     const [address, setAddress] = useState("")
+    const [contructNumber, setContructNumber] = useState("")
+    const [contructDate, setContructDate] = useState(null)
+    const [price, setPrice] = useState(null)
+    const [priceDate, setPriseDate] = useState(null)
+    const [ownershipType, setOwnershipType] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
+    const [phoneNumbers, setPhoneNumbers] = useState("")
     const [phoneNumbers, setPhoneNumbers] = useState("")
 
     const handleFacilityAdd = async () => {

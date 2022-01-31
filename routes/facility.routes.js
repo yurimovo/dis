@@ -23,7 +23,7 @@ router.post('/facility-add', async (req, res) => {
         const fac = new Facility(
             {organization, facility, address, phoneNumbers})
         await fac.save()
-        res.json({message: "Sim was added"})
+        res.json({message: "Facility was added"})
     } catch (e) {
         console.log(e)
         res.send({message: "Server error"})
