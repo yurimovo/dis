@@ -8,10 +8,7 @@ router.post('/facility-add', async (req, res) => {
     try {
         //const baseUrl = config.get('baseUrl')
         const {
-            organization,
-            facility,
-            address,
-            phoneNumbers
+            organization, facility, address, phoneNumbers
         } = req.body
 
         const facilityCandidate = await Facility.findOne({ facility })
