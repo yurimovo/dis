@@ -4,25 +4,26 @@ import { useNavigate } from 'react-router-dom'
 import './facility-add.css'
 
 import {facilityAdd} from "../../actions/facility"
-import Input from "../../utils/input/Input";
 
 const FacilityAdd = () => {
 
     const history = useNavigate()
+
+    const [inputType, setInputType] = useState('text')
 
     const [organization, setOrganization] = useState("")
     const [facility, setFacility] = useState("")
     const [address, setAddress] = useState("")
     const [phoneNumbers, setPhoneNumbers] = useState("")
     const [contructNumber, setContructNumber] = useState("")
-    const [contructDate, setContructDate] = useState(null)
-    const [price, setPrice] = useState(null)
-    const [priceDate, setPriceDate] = useState(null)
+    const [contructDate, setContructDate] = useState("")
+    const [price, setPrice] = useState("")
+    const [priceDate, setPriceDate] = useState("")
     const [ownershipType, setOwnershipType] = useState("")
     const [facilityCategory, setFacilityCategory] = useState("")
     const [securityType, setSecurityType] = useState("")
-    const [contructFileNumber, setContructFileNumber] = useState(null)
-    const [letteredFileNumber, setLetteredFileNumber] = useState(null)
+    const [contructFileNumber, setContructFileNumber] = useState("")
+    const [letteredFileNumber, setLetteredFileNumber] = useState("")
     const [spi, setSpi] = useState("")
     const [facilityHardware, setFacilityHardware] = useState("")
     const [pullNumbers, setPullNumbers] = useState("")
@@ -44,6 +45,10 @@ const FacilityAdd = () => {
         history('/')
     }
 
+    const handleTypeChange = () => {
+        setInputType('date')
+    }
+
     return (
         <form className="bg-transparent">
             <div className="container">
@@ -54,22 +59,22 @@ const FacilityAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-4 text-center">
-                        <Input className="input-fa"
+                        <input className="input-fa"
                             placeholder="Организация:"
                             value={organization}
                             setValue={setOrganization}
                         />
-                        <Input className="input-fa"
+                        <input className="input-fa"
                             placeholder="Объект:"
                             value={facility}
                             setValue={setFacility}
                         />
-                        <Input className="input-fa"
+                        <input className="input-fa"
                             placeholder="Адрес:"
                             value={address}
                             setValue={setAddress}
                         />
-                        <Input className="input-fa"
+                        <input className="input-fa"
                             placeholder="№ телефонов:"
                             value={phoneNumbers}
                             setValue={setPhoneNumbers}
@@ -81,8 +86,10 @@ const FacilityAdd = () => {
                         />
                         <input className="input-fa"
                             placeholder="Дата договора"
+                            type={inputType}
                                value={contructDate}
                                setValue={setContructDate}
+                               onClick={handleTypeChange}
                         />
                         <input className="input-fa"
                             placeholder="Стоимость в месяц:"
