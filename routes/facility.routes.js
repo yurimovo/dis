@@ -8,10 +8,13 @@ router.post('/facility-add', async (req, res) => {
     try {
         //const baseUrl = config.get('baseUrl')
         const {
-            organization,
-            facility,
-            address,
-            phoneNumbers
+            organization, facility, address, phoneNumbers, contructNumber,
+            contructDate, price, priceDate, ownershipType, facilitycategory,
+            securityType, contructFileNumber, letteredFileNumber, spi,
+            facilityHardware, pultNumbers, mountingOrganization,
+            survingOrganization, simNumber, serialNumber, fccId, responsible,
+            assortment, securityHours
+
         } = req.body
 
         const facilityCandidate = await Facility.findOne({ facility })
@@ -21,7 +24,13 @@ router.post('/facility-add', async (req, res) => {
         }
 
         const fac = new Facility(
-            {organization, facility, address, phoneNumbers})
+            {organization, facility, address, phoneNumbers, contructNumber,
+                contructDate, price, priceDate, ownershipType, facilitycategory,
+                securityType, contructFileNumber, letteredFileNumber, spi,
+                facilityHardware, pultNumbers, mountingOrganization,
+                survingOrganization, simNumber, serialNumber, fccId, responsible,
+                assortment, securityHours
+            })
         await fac.save()
         res.json({message: "Facility was added"})
     } catch (e) {

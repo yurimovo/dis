@@ -20,5 +20,11 @@
 }
 
 .btn-add {
-    margin-top: 2em;
+    margin-top: 30px;
+}
+
+.container-body {
+    display: flex;
+    flex-direction: column;
+    article: 1;
 }
