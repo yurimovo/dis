@@ -1,19 +1,19 @@
 import React, {useState} from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import './sim-add.css'
 
-import {simAdd} from "../../actions/sim"
+import {simAdd} from "../../actions/sim";
+import Input from "../../utils/input/Input";
+import DatePicker from "../../utils/input/DatePicker";
 
 const SimAdd = () => {
 
     const history = useNavigate()
 
-    const [inputType, setInputType] = useState('text')
-
     const [fccId, setFccId] = useState("")
     const [simNumber, setSimNumber] = useState("")
-    const [mountingDate, setMountingDate] = useState("")
+    const [mountingDate, setMountingDate] = useState(Date.now)
     const [pultNumber, setPultNumber] = useState("")
     const [mountingPlace, setMountingPlace] = useState("")
     const [mountingAddress, setMountingAddress] = useState("")
@@ -29,10 +29,6 @@ const SimAdd = () => {
         history('/')
     }
 
-    const handleTypeChange = () => {
-        setInputType('date')
-    }
-
     return (
         <form className="bg-transparent">
             <div className="container">
@@ -43,7 +39,7 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
+                        <Input
                             className="input-sa"
                             value={fccId}
                             setValue={setFccId}
@@ -54,7 +50,7 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
+                        <Input
                             className="input-sa"
                             value={simNumber}
                             setValue={setSimNumber}
@@ -65,19 +61,18 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
-                            className="input-sa"
-                            type={inputType}
+                        <DatePicker
+                            className="dp-sa"
+                            type='date'
                             placeholder="Дата установки"
                             value={mountingDate}
                             setValue={setMountingDate}
-                            onClick={handleTypeChange}
                         />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
+                        <Input
                             className="input-sa"
                             value={pultNumber}
                             setValue={setPultNumber}
@@ -88,7 +83,7 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
+                        <Input
                             className="input-sa"
                             value={mountingPlace}
                             setValue={setMountingPlace}
@@ -99,7 +94,7 @@ const SimAdd = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <input
+                        <Input
                             className="input-sa"
                             value={mountingAddress}
                             setValue={setMountingAddress}

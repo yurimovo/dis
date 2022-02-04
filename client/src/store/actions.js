@@ -18,11 +18,11 @@ const checkAuth = () => {
     }
 }
 
-const getSimCards = () => {
+/*const getSimCards = () => {
     return {
         type: actions.GETSIMCARD
     }
-}
+}*/
 
 export {
     login,

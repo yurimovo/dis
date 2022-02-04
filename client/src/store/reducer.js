@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
                 auth: false
             }
 
-        case actions.GETSIMCARD:
+        /*case actions.GETSIMCARD:
             return {
                 ...state,
                 fccId: '',
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
                 pultNumber: '',
                 mountingPlace: '',
                 mountingAddress: ''
-            }
+            }*/
 
         case actions.CHECKAUTH:
             if(localStorage.getItem('token')) {
