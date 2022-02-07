@@ -20,13 +20,7 @@ router.post('/facility-add', async (req, res) => {
                 {message: `Facility already exist`})
         }
 
-        const fac = new Facility(
-            { organization, facility, address, phoneNumbers, contructNumber,
-                contructDate, price, priceDate, ownershipType, facilityCategory,
-                securityType, contructFileNumber, letteredFileNumber, spi,
-                facilityHardware, pultNumbers, mountingOrganization,
-                survingOrganization, simNumber, serialNumber, fccId, responsible,
-                assortment, securityHours })
+        const fac = new Facility()
         await fac.save()
         res.json({message: "Facility was added"})
     } catch (e) {

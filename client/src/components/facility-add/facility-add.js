@@ -16,7 +16,8 @@ const FacilityAdd = () => {
 
     const history = useNavigate()
 
-    const [inputType, setInputType] = useState('text')
+    const [inputTypeContructDate, setInputTypeContructDate] = useState('text')
+    const [inputTypePriceDate, setInputTypePriceDate] = useState('text')
     const { register, handleSubmit } = useForm()
 
     const onSubmit = async (data) => {
@@ -25,8 +26,12 @@ const FacilityAdd = () => {
         history('/')
     }
 
-    const handleTypeChange = () => {
-        setInputType('date')
+    const handleTypeContructDateChange = () => {
+        setInputTypeContructDate('date')
+    }
+
+    const handleTypePriceDateChange = () => {
+        setInputTypePriceDate('date')
     }
 
     return (
@@ -65,11 +70,11 @@ const FacilityAdd = () => {
                                name={'contructNumber'}
                         />
                         <TextField className="input-fa"
-                               type={inputType}
+                               type={inputTypeContructDate}
                                placeholder="Дата договора"
                                {...register('contructDate')}
                                name={'contructDate'}
-                               onClick={handleTypeChange}
+                               onClick={handleTypeContructDateChange}
                         />
                         <TextField className="input-fa"
                                placeholder="Стоимость в месяц:"
@@ -77,11 +82,11 @@ const FacilityAdd = () => {
                                name={'price'}
                         />
                         <TextField className="input-fa"
-                               type={inputType}
+                               type={inputTypePriceDate}
                                placeholder="Дата тарифа"
                                {...register('price')}
                                name={'priceDate'}
-                               onClick={handleTypeChange}
+                               onClick={handleTypePriceDateChange}
                         />
                     </div>
                     <div className="col-sm-4 text-center">
