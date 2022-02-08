@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .main-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0;
     margin: 0;
     background-color:cornsilk;
 }
 
 .h2-main {
+    display: flex;
+    justify-content: center;
     padding-top: 10px;
     font-family: 'Lobster', cursive;
     color:navy;

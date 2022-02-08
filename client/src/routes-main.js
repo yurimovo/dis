@@ -16,6 +16,8 @@ import Auth from './components/auth'
 import { useSelector } from 'react-redux'
 import SimDetails from "./components/sim-details";
 import SimCard from "./components/sim-card";
+import FacilityDetails from "./components/facility-details";
+import Facility from "./components/facility";
 
 export const useRoutesMain = () => {
     const auth = useSelector(state => state.auth)
@@ -30,6 +32,8 @@ export const useRoutesMain = () => {
             <Route path="/admin-panel" element={<AdminPanel />} />
             <Route path="/facility-add" element={<FacilityAdd />} />
             <Route path="/facility-edit" element={<FacilityEdit />} />
+            <Route path="/facility-details/:id" element={<FacilityDetails />} />
+            <Route path="/facility" element={<Facility />} />
             <Route path="/apartment-add" element={<ApartmentAdd />} />
             <Route path="/apartment-edit" element={<ApartmentEdit />} />
             <Route path="/sim-add" element={<SimAdd />} />

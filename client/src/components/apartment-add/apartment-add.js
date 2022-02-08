@@ -1,145 +1,104 @@
 import React, { useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
+import axios from "axios"
+
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import Select from '@material-ui/core/Select'
 
 import './apartment-add.css'
 
 const ApartmentAdd = () => {
 
-    const [contructDateType, setContructDateType] = useState('text')
-    const [priceDateType, setPriceDateType] = useState('text')
+    const history = useNavigate()
 
-    const typeContructDateChange = () => {
-        setContructDateType('date')
+    const [inputTypeContructDate, setInputTypeContructDate] = useState('text')
+    const [inputTypePriceDate, setInputTypePriceDate] = useState('text')
+    const { register, handleSubmit } = useForm()
+
+    const onSubmit = async (data) => {
+        await axios.post('/api/apartment/apartment-add', {data})
+        console.log(data)
+        history('/')
     }
 
-    const typePriceDateChange = () => {
-        setPriceDateType('date')
+    const handleTypeContructDateChange = () => {
+        setInputTypeContructDate('date')
     }
 
-    const {
-        register,
-        formState: {
-            errors,
-            isValid
-        },
-        handleSubmit,
-        reset
-    } = useForm({
-        mode: "onBlur"
-    })
-
-    const onSubmit = (apartmentData) => {
-        console.log(apartmentData)
-        reset()
+    const handleTypePriceDateChange = () => {
+        setInputTypePriceDate('date')
     }
 
     return (
-        <form className="bg-transparent"  onSubmit={handleSubmit(onSubmit)}>
-            <div className="container">
+        <form className="bg-transparent" onSubmit={handleSubmit(onSubmit)}>
+            <div className="container container-fluid container-body">
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <h2 className="h2-aa">Добавление МХИГ</h2>
+                        <h2 className="h2-fa">Добавление МХИГ</h2>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-4 text-center">
-                        <input className="input-aa"
-                            placeholder="ФИО собственника:"
-                            {...register('owner', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="Ф.И.О. собственника:"
+                                   {...register('owner')}
+                                   name={'owner'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.owner && 
-                            <p className="text-danger">{errors?.owner?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="Адрес:"
-                            {...register('address', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="Адрес:"
+                                   {...register('address')}
+                                   name={'address'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.address && 
-                            <p className="text-danger">{errors?.address?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="№ телефона:"
-                            {...register('phoneNumbers', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="№ телефонов:"
+                                   {...register('phoneNumbers')}
+                                   name={'phoneNumbers'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.phoneNumbers && 
-                            <p className="text-danger">{errors?.phoneNumbers?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="№ договора:"
-                            {...register('contructNumber', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="№ договора:"
+                                   {...register('contructNumber')}
+                                   name={'contructNumber'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.contructNumber && 
-                            <p className="text-danger">{errors?.contructNumber?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            type={contructDateType}
-                            placeholder="Дата договора"
-                            onFocus={typeContructDateChange}
-                            {...register('contructDate', {
-                                required: 'Поле обязательно для заполнения',
-                                valueIsDate: {
-                                    value: true,
-                                    message: 'В поле должна быть дата'
-                                }
-                            })}
+                        <TextField className="input-fa"
+                                   type={inputTypeContructDate}
+                                   placeholder="Дата договора"
+                                   {...register('contructDate')}
+                                   name={'contructDate'}
+                                   onClick={handleTypeContructDateChange}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.contructDate && 
-                            <p className="text-danger">{errors?.contructDate?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="Стоимость в месяц:"
-                            {...register('price', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="Стоимость в месяц:"
+                                   {...register('price')}
+                                   name={'price'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.price && 
-                            <p className="text-danger">{errors?.price?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                     <div className="col-sm-4 text-center">
-                        <input className="input-aa"
-                            type={priceDateType}
-                            placeholder="Дата тарифа"
-                            onFocus={typePriceDateChange}
-                            {...register('priceDate', {
-                                required: 'Поле обязательно для заполнения',
-                                valueIsDate: {
-                                    value: true,
-                                    message: 'В поле должна быть дата'
-                                }
-                            })}
+                        <TextField className="input-fa"
+                                   type={inputTypePriceDate}
+                                   placeholder="Дата тарифа"
+                                   {...register('price')}
+                                   name={'priceDate'}
+                                   onClick={handleTypePriceDateChange}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.priceDate && 
-                            <p className="text-danger">{errors?.priceDate?.message || 'Error:'}</p>}
-                        </div>
-                        <select className="select-aa" {...register("apartmentCategory", { required: true })}>
-                            <option value="0" selected disabled>Категория</option>
+                        <Select defaultValue={"0"}
+                                className="select-fa"
+                                {...register('apartmentCategory')}
+                                name={'apartmentCategory'}
+                        >
+                            <option value="0" disabled>Категория</option>
                             <option value="1">Гараж</option>
                             <option value="2">Квартира</option>
                             <option value="3">Коттедж</option>
                             <option value="4">Частный дом</option>
-                        </select>
-                        <div style={{height: 40}}>
-                            {errors?.apartmentCategory && 
-                            <p className="text-danger">{errors?.apartmentCategory?.message || 'Error:'}</p>}
-                        </div>
-                        <select className="select-aa" {...register("securityType", { required: true })}>
-                            <option value="0" selected disabled>Вид охраны</option>
+                        </Select>
+                        <Select defaultValue={"0"}
+                                className="select-fa"
+                                {...register('securityType')}
+                                name={'securityType'}
+                        >
+                            <option value="0" disabled>Вид охраны</option>
                             <option value="1">КТС GSM</option>
                             <option value="2">ПЦН GSM</option>
                             <option value="3">ПЦН+КТС GSM</option>
@@ -149,45 +108,33 @@ const ApartmentAdd = () => {
                             <option value="7">КТС Радио</option>
                             <option value="8">ПЦН Радио</option>
                             <option value="9">ПЦН+КТС Радио</option>
-                        </select>
-                        <div style={{height: 40}}>
-                            {errors?.securityType && 
-                            <p className="text-danger">{errors?.securityType?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="№ договорного дела:"
-                            {...register('contructFileNumber', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        </Select>
+                        <TextField className="input-fa"
+                                   placeholder="№ договорного дела:"
+                                   {...register('contructFileNumber')}
+                                   name={'contructFileNumber'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.contructFileNumber && 
-                            <p className="text-danger">{errors?.contructFileNumber?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="№ литерного дела:"
-                            {...register('letteredFileNumber', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="№ литерного дела:"
+                                   {...register('letteredFileNumber')}
+                                   name={'letteredFileNumber'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.letteredFileNumber && 
-                            <p className="text-danger">{errors?.letteredFileNumber?.message || 'Error:'}</p>}
-                        </div>
-                        <select className="select-aa" {...register("spi", { required: true })}>
-                            <option value="0" selected disabled>СПИ</option>
+                        <Select defaultValue={"0"}
+                                className="select-fa"
+                                {...register('spi')}
+                                name={'spi'}
+                        >
+                            <option value="0" disabled>СПИ</option>
                             <option value="1">АСПИ Приток-GSM</option>
                             <option value="2">АСПИ Приток-Ethernet</option>
                             <option value="3">РСПИ Иртыш-3Р</option>
-                        </select>
-                        <div style={{height: 40}}>
-                            {errors?.spi && 
-                            <p className="text-danger">{errors?.spi?.message || 'Error:'}</p>}
-                        </div>
-                    </div>
-                    <div className="col-sm-4 text-center">
-                        <select className="select-aa" {...register("apartmentHardware", { required: true })}>
-                            <option value="0" selected disabled>Оборудование</option>
+                        </Select>
+                        <Select defaultValue={"0"}
+                                className="select-fa"
+                                {...register('facilityCategory')}
+                                name={'facilityHardware'}
+                        >
+                            <option value="0" disabled>Объектовый прибор</option>
                             <option value="1">БО Иртыш-112</option>
                             <option value="2">БО Иртыш-113(113-3)</option>
                             <option value="3">БО Иртыш-214</option>
@@ -195,73 +142,56 @@ const ApartmentAdd = () => {
                             <option value="5">Мобильный телохранитель</option>
                             <option value="6">ППКОП Приток 011-8-1-011(М)</option>
                             <option value="7">ППКОП Приток-А-КОП-02(03,04,05)</option>
-                        </select>
-                        <div style={{height: 40}}>
-                            {errors?.apartmentHardware && 
-                            <p className="text-danger">{errors?.apartmentHardware?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="Пультовые номера:"
-                            {...register('pultNumbers', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        </Select>
+                    </div>
+                    <div className="col-sm-4 text-center">
+                        <TextField className="input-fa"
+                                   placeholder="Пультовые номера:"
+                                   {...register('pultNumbers')}
+                                   name={'pultNumbers'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.pultNumbers && 
-                            <p className="text-danger">{errors?.pultNumbers?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="№ телефона СИМ:"
-                            {...register('simNumber', {
-                                required: 'Поле обязательно для заполнения',
-                                maxLength: {
-                                    value: 12,
-                                    message: 'Максимальная длина 12 символов'
-                                }
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="№ телефона СИМ:"
+                                   {...register('simNumber')}
+                                   name={'simNumber'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.simNumber && 
-                            <p className="text-danger">{errors?.simNumber?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="Заводской №:"
-                            {...register('serialNumber', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="Заводской №:"
+                                   {...register('serialNumber')}
+                                   name={'serialNumber'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.serialNumber && 
-                            <p className="text-danger">{errors?.serialNumber?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="FCC ID:"
-                            {...register('fccId', {
-                                required: 'Поле обязательно для заполнения',
-                                maxLength: {
-                                    value: 19,
-                                    message: 'Максимальная длина 19 символов'
-                                }
-                            })}
+                        <TextField className="input-fa"
+                                   placeholder="FCC ID:"
+                                   {...register('fccId')}
+                                   name={'fccId'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.fccId && <p className="text-danger">{errors?.fccId?.message || 'Error:'}</p>}
-                        </div>
-                        <input className="input-aa"
-                            placeholder="Подбор МХИГ:"
-                            {...register('assortment', {
-                                required: 'Поле обязательно для заполнения',
-                            })}
+                        <Select defaultValue={"0"}
+                                className="select-fa"
+                                {...register('responsible')}
+                                name={'responsible'}
+                        >
+                            <option value="0" disabled>Ответственный</option>
+                            <option value="1">Белик А.П.</option>
+                            <option value="2">Величко А.С.</option>
+                            <option value="3">Шешиков Ю.С.</option>
+                        </Select>
+                        <TextField className="input-fa"
+                                   placeholder="Подбор объекта:"
+                                   {...register('assortment')}
+                                   name={'assortment'}
                         />
-                        <div style={{height: 40}}>
-                            {errors?.assortment && 
-                            <p className="text-danger">{errors?.assortment?.message || 'Error:'}</p>}
-                        </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row row-mb">
                     <div className="col-sm-12 text-center">
-                        <input className="btn btn-success" type="submit" disabled={!isValid} />
+                        <Button
+                            type={'submit'}
+                            variant={'contained'}
+                            className="btn btn-submit"
+                            //onClick={handleFacilityAdd}
+                        >
+                            Добавить
+                        </Button>
                     </div>
                 </div>
             </div>

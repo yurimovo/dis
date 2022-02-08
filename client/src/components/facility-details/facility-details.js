@@ -3,31 +3,30 @@ import { useParams } from 'react-router-dom'
 import { useHttp } from "../../hooks/http.hook"
 import { AuthContext } from "../../context/AuthContext"
 import Loader from "../loader"
-import SimCard from "../sim-card"
+import Facility from "../facility"
 
-const SimDetails = () => {
+const FacilityDetails = () => {
+
     const { token } = useContext(AuthContext)
     const { request, loading } = useHttp()
-    const [sim, setSim] = useState(null)
-    const simId = useParams().id
-    
-    const getSim = useCallback(async () => {
+    const [facility, setFacility] = useState(null)
+    const facilityId = useParams().id
+
+    const getFacility = useCallback(async () => {
         try {
             const fetched = await request(
-                `/api/sim/${simId}`,
+                `/api/facility/${facilityId}`,
                 'GET',
                 null,
                 {Authorization: `Bearer ${token}`}
-                )
-            setSim(fetched)
-        } catch (e) {
-            
-        }
-    }, [token, simId, request ])
+            )
+            setFacility(fetched)
+        } catch (e) {}
+    }, [token, facilityId, request ])
 
     useEffect(() => {
-        getSim()
-    }, [getSim])
+        getFacility()
+    }, [getFacility])
 
     if (loading) {
         return <Loader />
@@ -35,9 +34,9 @@ const SimDetails = () => {
 
     return (
         <>
-            { !loading && sim && <SimCard sim={ sim } /> }
+            { !loading && facility && <Facility facility={ facility } /> }
         </>
     )
 }
 
-export default SimDetails
+export default FacilityDetails
